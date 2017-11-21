@@ -1,56 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical">
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="90dp" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingStart="24dp"
-        android:text="account_balance"
-        android:textSize="12sp" />
+    <data>
+        <variable
+            name="userViewModel"
+            type="com.treecute.plant.viewmodel.UserViewModel"/>
+    </data>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="90dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            tools:imageUrl="@{userViewModel.avatar}"
+            android:layout_marginStart="30dp"/>
 
         <TextView
+            android:layout_marginTop="10dp"
+            android:text="@{userViewModel.userName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="balance_currency" />
+            android:layout_marginStart="30dp" />
 
-        <TextView
+        <Space
             android:layout_width="wrap_content"
+            android:layout_height="90dp" />
+
+        <com.rey.material.widget.Button
+            style="@style/Material.Drawable.Ripple.Touch"
+            android:drawableLeft="@drawable/favorite"
+            android:text="       我的收藏"
+            android:textSize="18dp"
+            android:textAlignment="textStart"
+            android:background="@color/white"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="balance_amount"
-            android:textSize="34sp" />
+            android:paddingStart="30dp"/>
+
+        <com.rey.material.widget.Button
+            android:id="@+id/button"
+            style="@style/Material.Drawable.Ripple.Touch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/cart"
+            android:paddingStart="30dp"
+            android:text="       购物车"
+            android:textSize="18dp"
+            android:textAlignment="textStart" />
+
+        <com.rey.material.widget.Button
+            style="@style/Material.Drawable.Ripple.Touch"
+            android:drawableLeft="@drawable/setting"
+            android:text="       设置"
+            android:textSize="18dp"
+            android:textAlignment="textStart"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp"/>
 
     </LinearLayout>
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="56dp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content" />
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="40dp" />
-
-</LinearLayout>
+</layout>
