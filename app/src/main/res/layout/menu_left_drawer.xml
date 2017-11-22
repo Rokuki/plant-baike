@@ -41,7 +41,7 @@
             style="@style/Material.Drawable.Ripple.Touch"
             android:drawableLeft="@drawable/favorite"
             android:text="       我的收藏"
-            android:textSize="18dp"
+            android:textSize="15sp"
             android:textAlignment="textStart"
             android:background="@color/white"
             android:layout_width="match_parent"
@@ -57,14 +57,14 @@
             android:drawableLeft="@drawable/cart"
             android:paddingStart="30dp"
             android:text="       购物车"
-            android:textSize="18dp"
+            android:textSize="15sp"
             android:textAlignment="textStart" />
 
         <com.rey.material.widget.Button
             style="@style/Material.Drawable.Ripple.Touch"
             android:drawableLeft="@drawable/setting"
             android:text="       设置"
-            android:textSize="18dp"
+            android:textSize="15sp"
             android:textAlignment="textStart"
             android:background="@color/white"
             android:layout_width="match_parent"

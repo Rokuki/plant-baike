@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="user"
+            type="com.treecute.plant.model.User"/>
+        <variable
+            name="userViewModel"
+            type="com.treecute.plant.viewmodel.UserViewModel"/>
+    </data>
+    
+    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/login">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:id="@+id/appBarLayout2">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:mtf_labelColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/username"
+            android:layout_marginTop="35dp"
+            android:layout_below="@+id/appBarLayout2"
+            android:layout_alignStart="@+id/password">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="用户名"
+                android:text="@{user.username}"
+                android:textColor="#333"
+                android:textSize="15sp" />
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:mtf_labelColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="23dp"
+            android:id="@+id/password"
+            android:layout_below="@+id/username"
+            android:layout_centerHorizontal="true">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="密码"
+                android:text="@{user.password}"
+                android:textColor="#333"
+                android:textSize="15sp" />
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:mtf_labelColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="23dp"
+            android:id="@+id/confirm_password"
+            android:layout_below="@+id/password"
+            android:layout_alignStart="@+id/password">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="重复密码"
+                android:afterTextChanged="@{userViewModel.afterConfirmPasswordInput}"
+                android:textColor="#333"
+                android:textSize="15sp" />
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <com.rey.material.widget.Button
+            android:id="@+id/sign_up_btn"
+            android:text="注册"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:background="@drawable/sign_up_btn"
+            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/password"
+            android:layout_marginBottom="53dp"
+            android:onClick="@{userViewModel::sign_up}">
+
+
+        </com.rey.material.widget.Button>
+
+
+    </RelativeLayout>
+
+</layout>
