@@ -12,4 +12,13 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="tab_radiobutton">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@drawable/tab_color</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>
