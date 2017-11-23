@@ -1,6 +1,5 @@
 package com.treecute.plant.view;
 
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.support.annotation.IdRes;
@@ -15,7 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.treecute.plant.R;
-import com.treecute.plant.adapter.MainFragmentAdapter;
+import com.treecute.plant.view.adapter.MainFragmentAdapter;
 import com.treecute.plant.databinding.MenuLeftDrawerBinding;
 import com.treecute.plant.model.User;
 import com.treecute.plant.viewmodel.UserViewModel;

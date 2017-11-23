@@ -3,6 +3,9 @@ package com.treecute.plant.viewmodel;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
+import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
+import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +16,8 @@ import com.treecute.plant.model.User;
 
 import java.util.Observable;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * Created by mkind on 2017/11/21 0021.
  */
@@ -21,7 +26,8 @@ public class UserViewModel extends BaseObservable {
     private User user;
     private Context context;
 
-    public UserViewModel(Context context) {
+
+    public UserViewModel(@NonNull Context context) {
         this.context = context;
     }
 
@@ -30,13 +36,6 @@ public class UserViewModel extends BaseObservable {
         this.context = context;
     }
 
-    public void afterConfirmPasswordInput(Editable s){
-        Log.d("editable",s.toString());
-    }
-
-    public void sign_up(View view){
-        Log.d("dd","sign_up");
-    }
 
     public String getUserName(){
         return user.username;

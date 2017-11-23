@@ -5,8 +5,8 @@
             name="user"
             type="com.treecute.plant.model.User"/>
         <variable
-            name="userViewModel"
-            type="com.treecute.plant.viewmodel.UserViewModel"/>
+            name="signUpViewModel"
+            type="com.treecute.plant.viewmodel.SignUpViewModel"/>
     </data>
     
     <RelativeLayout
@@ -20,10 +20,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:id="@+id/appBarLayout2">
+            android:id="@+id/appBarLayout2"
+            android:theme="@style/toolbar_theme">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
+                android:title="注册"
+                android:titleTextColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -47,7 +50,8 @@
                 android:hint="用户名"
                 android:text="@{user.username}"
                 android:textColor="#333"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:afterTextChanged="@{signUpViewModel.afterUsernameInput}"/>
 
         </com.github.florent37.materialtextfield.MaterialTextField>
 
@@ -67,7 +71,9 @@
                 android:hint="密码"
                 android:text="@{user.password}"
                 android:textColor="#333"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:inputType="textPassword"
+                android:afterTextChanged="@{signUpViewModel.afterPasswordInput}"/>
 
         </com.github.florent37.materialtextfield.MaterialTextField>
 
@@ -82,11 +88,13 @@
             android:layout_alignStart="@+id/password">
 
             <EditText
+                android:id="@+id/textConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="重复密码"
-                android:afterTextChanged="@{userViewModel.afterConfirmPasswordInput}"
+                android:afterTextChanged="@{signUpViewModel.afterConfirmPasswordInput}"
                 android:textColor="#333"
+                android:inputType="textPassword"
                 android:textSize="15sp" />
 
         </com.github.florent37.materialtextfield.MaterialTextField>
@@ -102,10 +110,21 @@
             android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/password"
             android:layout_marginBottom="53dp"
-            android:onClick="@{userViewModel::sign_up}">
+            android:onClick="@{signUpViewModel::sign_up}">
 
 
         </com.rey.material.widget.Button>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{signUpViewModel.hint}"
+            app:visibility="@{signUpViewModel.hintVisibility}"
+            android:textColor="@color/warning"
+            android:layout_below="@+id/confirm_password"
+            android:layout_alignStart="@+id/confirm_password"
+            android:layout_marginTop="15dp" />
 
 
     </RelativeLayout>

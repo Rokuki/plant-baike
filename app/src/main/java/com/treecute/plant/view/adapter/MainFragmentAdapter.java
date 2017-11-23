@@ -1,12 +1,12 @@
-package com.treecute.plant.adapter;
+package com.treecute.plant.view.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
-import com.treecute.plant.fragment.HomePageFragment;
-import com.treecute.plant.fragment.SecondPageFragment;
+import com.treecute.plant.view.fragment.HomePageFragment;
+import com.treecute.plant.view.fragment.SecondPageFragment;
 import com.treecute.plant.view.MainActivity;
 
 /**

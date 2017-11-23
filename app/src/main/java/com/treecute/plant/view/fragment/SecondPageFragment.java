@@ -1,4 +1,4 @@
-package com.treecute.plant.fragment;
+package com.treecute.plant.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -10,6 +10,11 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
+    <style name="toolbar_theme" parent="Base.Widget.AppCompat.Light.ActionBar">
+        <item name="android:colorControlNormal">@color/white</item>
     </style>
 
     <style name="tab_radiobutton">
