@@ -19,4 +19,5 @@ class UserResponse {
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
+
 }

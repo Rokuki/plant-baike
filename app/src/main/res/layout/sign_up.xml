@@ -40,9 +40,9 @@
             app:mtf_labelColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:id="@+id/username"
-            android:layout_marginTop="35dp"
             android:layout_below="@+id/appBarLayout2"
-            android:layout_alignStart="@+id/password">
+            android:layout_toEndOf="@+id/textView"
+            android:layout_marginTop="15dp">
 
             <EditText
                 android:layout_width="match_parent"
@@ -60,9 +60,8 @@
             android:layout_height="wrap_content"
             app:mtf_labelColor="@color/white"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="23dp"
             android:id="@+id/password"
-            android:layout_below="@+id/username"
+            android:layout_above="@+id/confirm_password"
             android:layout_centerHorizontal="true">
 
             <EditText
@@ -82,9 +81,8 @@
             android:layout_height="wrap_content"
             app:mtf_labelColor="@color/white"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="23dp"
             android:id="@+id/confirm_password"
-            android:layout_below="@+id/password"
+            android:layout_centerVertical="true"
             android:layout_alignStart="@+id/password">
 
             <EditText
@@ -107,10 +105,10 @@
             android:background="@drawable/sign_up_btn"
             android:layout_height="wrap_content"
             android:layout_width="300dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/password"
-            android:layout_marginBottom="53dp"
-            android:onClick="@{signUpViewModel::sign_up}">
+            android:onClick="@{signUpViewModel::sign_up}"
+            android:layout_marginTop="39dp"
+            android:layout_below="@+id/textView"
+            android:layout_toEndOf="@+id/textView">
 
 
         </com.rey.material.widget.Button>

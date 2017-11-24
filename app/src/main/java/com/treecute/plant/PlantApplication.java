@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.treecute.plant.data.PlantFactory;
 import com.treecute.plant.data.PlantService;
+import com.treecute.plant.data.UserFactory;
+import com.treecute.plant.data.UserService;
 
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
@@ -15,6 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class PlantApplication extends Application {
     private PlantService plantService;
+    private UserService userService;
     private Scheduler scheduler;
 
     private static PlantApplication get(Context context){
@@ -30,6 +33,13 @@ public class PlantApplication extends Application {
             plantService = PlantFactory.create();
         }
         return plantService;
+    }
+
+    public UserService getUserService(){
+        if (userService==null){
+            userService = UserFactory.create();
+        }
+        return userService;
     }
 
     public Scheduler subscribeScheduler(){
