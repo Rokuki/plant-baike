@@ -17,6 +17,12 @@
         <item name="android:colorControlNormal">@color/white</item>
     </style>
 
+    <style name="editText" parent="Material.Widget.EditText">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+
     <style name="tab_radiobutton">
         <item name="android:layout_width">30dp</item>
         <item name="android:layout_height">30dp</item>

@@ -12,6 +12,5 @@ public interface PlantService {
 
     @GET Observable<PlantResponse> fetchRandPlant(@Url String url);
 
-    @GET Observable<UserResponse> fetchUser(@Url String url);
 
 }

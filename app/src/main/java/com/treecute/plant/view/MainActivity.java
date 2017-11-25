@@ -1,8 +1,11 @@
 package com.treecute.plant.view;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.support.annotation.IdRes;
+import android.support.constraint.solver.Goal;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.treecute.plant.R;
 import com.treecute.plant.view.adapter.MainFragmentAdapter;
 import com.treecute.plant.databinding.MenuLeftDrawerBinding;
@@ -27,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private MainFragmentAdapter fragmentAdapter;
     private ViewPager viewPager;
     private RadioButton tab_home,tab_global;
+    private boolean is_login = false;
+    private MenuLeftDrawerBinding menuLeftDrawerBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +40,40 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         setContentView(R.layout.activity_main);
         initView(savedInstanceState);
         bindViews();
+        checkUserLoginStatus();
+    }
+
+    private void checkUserLoginStatus(){
+        SharedPreferences sharedPreferences = this.getSharedPreferences("user",MODE_PRIVATE);
+        if (!is_login){
+            //未确认，取存储看是否已经登录
+            String access_token = sharedPreferences.getString("access_token",null);
+            is_login = access_token != null;
+        }
+        if (is_login){
+            Gson gson = new Gson();
+            String userJson = sharedPreferences.getString("userJson",null);
+            User user = gson.fromJson(userJson,User.class);
+            UserViewModel userViewModel = new UserViewModel(user,this);
+            menuLeftDrawerBinding.setUserViewModel(userViewModel);
+        }else {
+            UserViewModel userViewModel = new UserViewModel(this);
+            menuLeftDrawerBinding.setUserViewModel(userViewModel);
+        }
     }
 
     private void initView(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        if (intent.getBooleanExtra("destroy_login",false)){
+            is_login = true;
+            LoginActivity.loginActivity.finish();
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         LayoutInflater layoutInflater = getLayoutInflater();
         View menu = layoutInflater.inflate(R.layout.menu_left_drawer,null);
-
+        menuLeftDrawerBinding = DataBindingUtil.bind(menu);
         new SlidingRootNavBuilder(this)
                 .withToolbarMenuToggle(toolbar)
                 .withMenuOpened(false)
@@ -59,15 +91,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         tab_global.setTypeface(iconfont);
         camera.setTypeface(iconfont);
         fragmentAdapter = new MainFragmentAdapter(getSupportFragmentManager());
-
-        MenuLeftDrawerBinding menuLeftDrawerBinding = DataBindingUtil.bind(menu);
-        User user = new User();
-        user.setAvatar("http://treecute.com/images/avatar.gif");
-        if (menuLeftDrawerBinding.getUserViewModel()==null){
-            menuLeftDrawerBinding.setUserViewModel(new UserViewModel(user,MainActivity.this));
-        }else {
-            menuLeftDrawerBinding.getUserViewModel().setUser(user);
-        }
     }
 
     private void bindViews() {

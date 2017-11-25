@@ -1,6 +1,7 @@
 package com.treecute.plant.viewmodel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.databinding.ObservableField;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.treecute.plant.model.User;
+import com.treecute.plant.view.LoginActivity;
 
 import java.util.Observable;
 
@@ -23,17 +25,28 @@ import static android.content.ContentValues.TAG;
  */
 
 public class UserViewModel extends BaseObservable {
+    public ObservableInt signAndLogin;
+    public ObservableInt userVisibility;
     private User user;
     private Context context;
 
 
     public UserViewModel(@NonNull Context context) {
         this.context = context;
+        signAndLogin = new ObservableInt(View.VISIBLE);
+        userVisibility = new ObservableInt(View.GONE);
     }
 
     public UserViewModel(User user, Context context) {
         this.user = user;
         this.context = context;
+        signAndLogin = new ObservableInt(View.GONE);
+        userVisibility = new ObservableInt(View.VISIBLE);
+    }
+
+    public void loginAndSign(View view){
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
     }
 
 

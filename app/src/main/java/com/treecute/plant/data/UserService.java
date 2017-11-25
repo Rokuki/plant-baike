@@ -1,5 +1,8 @@
 package com.treecute.plant.data;
 
+import com.treecute.plant.model.ResponseResult;
+import com.treecute.plant.model.User;
+
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -20,4 +23,6 @@ public interface UserService {
     @FormUrlEncoded
     @POST Observable<IntegerResponse> signUp(@Url String url, @FieldMap Map<String,String> data);
 
+    @FormUrlEncoded
+    @POST Observable<ResponseResult<User>> login(@Url String url, @FieldMap Map<String,String> data);
 }
