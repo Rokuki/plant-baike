@@ -49,7 +49,6 @@ public class UserViewModel extends BaseObservable {
         context.startActivity(intent);
     }
 
-
     public String getUserName(){
         return user.username;
     }

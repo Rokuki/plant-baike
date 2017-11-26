@@ -8,17 +8,85 @@
         </variable>
     </data>
 
-    <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <com.youth.banner.Banner
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:image_scale_type="center_crop" />
+        <LinearLayout
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:image_scale_type="center_crop" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <com.mikepenz.iconics.view.IconicsImageView
+                    app:iiv_icon="@string/faw_leaf"
+                    app:iiv_color="@color/colorPrimary"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/iconicsImageView2" />
+
+                <TextView
+                    style="@style/title"
+                    android:text="热门分类"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/iconicsImageView2"
+                    android:layout_marginStart="14dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/category_recyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <com.mikepenz.iconics.view.IconicsImageView
+                    app:iiv_icon="@string/faw_th_list"
+                    app:iiv_color="@color/colorPrimary"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/glance" />
+
+                <TextView
+                    style="@style/title"
+                    android:text="随便看看"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/glance"
+                    android:layout_marginStart="14dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/glance_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false">
+
+            </android.support.v7.widget.RecyclerView>
 
 
-    </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
 
 </layout>

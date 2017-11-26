@@ -61,6 +61,10 @@ public class PlantDetailViewModel extends BaseObservable {
         return plant.hasNamerAge() ? View.VISIBLE : View.GONE;
     }
 
+    public int getSummaryVisibility(){
+        return plant.hasSummary() ? View.VISIBLE : View.GONE;
+    }
+
     public String getName(){
         return plant.name;
     }
@@ -72,6 +76,7 @@ public class PlantDetailViewModel extends BaseObservable {
     public String getLatinName(){
         return plant.latinName;
     }
+
     public Integer getId() {
         return plant.id;
     }
@@ -91,7 +96,6 @@ public class PlantDetailViewModel extends BaseObservable {
     public String getPClass(){
         return plant.pClass;
     }
-
 
     public String getKingdom() {
         return plant.kingdom;
@@ -154,7 +158,7 @@ public class PlantDetailViewModel extends BaseObservable {
     }
 
     public String getSummary() {
-        return plant.summary;
+        return "    "+plant.summary;
     }
 
 

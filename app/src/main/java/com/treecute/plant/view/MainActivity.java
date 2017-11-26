@@ -57,7 +57,9 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             UserViewModel userViewModel = new UserViewModel(user,this);
             menuLeftDrawerBinding.setUserViewModel(userViewModel);
         }else {
+            User user = new User();
             UserViewModel userViewModel = new UserViewModel(this);
+            userViewModel.setUser(user);
             menuLeftDrawerBinding.setUserViewModel(userViewModel);
         }
     }

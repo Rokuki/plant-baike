@@ -9,4 +9,5 @@
     <color name="center_color">#33CC66</color>
     <color name="end_color">#33CC33</color>
     <color name="warning">#fcf461</color>
+    <color name="title">#454545</color>
 </resources>

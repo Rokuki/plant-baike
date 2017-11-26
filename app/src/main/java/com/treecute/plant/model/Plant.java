@@ -32,6 +32,23 @@ public class Plant implements Serializable{
     @SerializedName("distributionArea") public String distributionArea;
     @SerializedName("treatmentFunctions") public String treatmentFunctions;
     @SerializedName("summary") public String summary;
+    @SerializedName("categoryPic") public String categoryPic;
+    @SerializedName("categoryPicS") public String categoryPicS;
+
+    public String getCategoryPic() {
+        return categoryPic;
+    }
+    public void setCategoryPic(String categoryPic) {
+        this.categoryPic = categoryPic == null ? null : categoryPic.trim();
+    }
+
+    public String getCategoryPicS() {
+        return categoryPicS;
+    }
+
+    public void setCategoryPicS(String categoryPicS) {
+        this.categoryPicS = categoryPicS == null ? null : categoryPicS.trim();
+    }
 
     public Integer getId() {
         return id;
@@ -273,6 +290,10 @@ public class Plant implements Serializable{
 
     public boolean hasSpecies() {
         return species!=null && !species.isEmpty();
+    }
+
+    public boolean hasSummary(){
+        return summary!=null && !summary.isEmpty();
     }
 
 

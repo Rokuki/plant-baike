@@ -11,6 +11,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 public class PlantFactory {
     public final static String BASE_URL = "http://120.25.1.26:97/";
     public final static String RAND_PLANT_URL = "http://120.25.1.26:97/plant/getRand";
+    public final static String CATEGORY_LIST_URL = "http://120.25.1.26:97/plant/getCategoryList";
+    public final static String GET_PLANT_BY_CATEGORY = "http://120.25.1.26:97/plant/getByCategory";
 
     public static PlantService create(){
         Retrofit retrofit = new Retrofit.Builder()

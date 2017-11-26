@@ -27,8 +27,11 @@
         <activity android:name=".view.SignUpActivity">
 
         </activity>
-        <activity android:name=".view.PlantDetail"
+        <activity android:name=".view.PlantDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".view.CategoryDetailActivity">
 
         </activity>
     </application>

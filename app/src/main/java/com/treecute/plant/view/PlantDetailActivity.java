@@ -16,7 +16,7 @@ import com.treecute.plant.viewmodel.PlantDetailViewModel;
  * Created by mkind on 2017/11/25 0025.
  */
 
-public class PlantDetail extends AppCompatActivity {
+public class PlantDetailActivity extends AppCompatActivity {
     private Plant plant;
     private PlantDetailBinding plantDetailBinding;
     private PlantDetailViewModel plantDetailViewModel;
@@ -37,8 +37,6 @@ public class PlantDetail extends AppCompatActivity {
 
     private void initPlant() {
         Intent intent = getIntent();
-        Gson gson = new Gson();
-        String plantJson = intent.getStringExtra("plant");
-        plant = gson.fromJson(plantJson,Plant.class);
+        plant = (Plant) intent.getSerializableExtra("plant");
     }
 }
