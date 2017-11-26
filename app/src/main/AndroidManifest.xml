@@ -27,6 +27,10 @@
         <activity android:name=".view.SignUpActivity">
 
         </activity>
+        <activity android:name=".view.PlantDetail"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

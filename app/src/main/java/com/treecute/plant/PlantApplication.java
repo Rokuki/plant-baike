@@ -3,6 +3,7 @@ package com.treecute.plant;
 import android.app.Application;
 import android.content.Context;
 
+import com.mikepenz.iconics.Iconics;
 import com.treecute.plant.data.PlantFactory;
 import com.treecute.plant.data.PlantService;
 import com.treecute.plant.data.UserFactory;
@@ -19,6 +20,12 @@ public class PlantApplication extends Application {
     private PlantService plantService;
     private UserService userService;
     private Scheduler scheduler;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Iconics.init(getApplicationContext());
+    }
 
     private static PlantApplication get(Context context){
         return (PlantApplication) context.getApplicationContext();

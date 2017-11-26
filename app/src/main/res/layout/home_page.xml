@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:text="dd"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <data>
+        <variable name="home"
+            type="com.treecute.plant.viewmodel.HomeViewModel">
+        </variable>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:image_scale_type="center_crop" />
 
 
-</LinearLayout>
+    </LinearLayout>
+
+</layout>

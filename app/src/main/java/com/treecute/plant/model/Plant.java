@@ -214,7 +214,6 @@ public class Plant implements Serializable{
         this.treatmentFunctions = treatmentFunctions == null ? null : treatmentFunctions.trim();
     }
 
-
     public String getSummary() {
         return summary;
     }
@@ -222,5 +221,59 @@ public class Plant implements Serializable{
     public void setSummary(String summary) {
         this.summary = summary == null ? null : summary.trim();
     }
+
+    public boolean hasGenus() {
+        return genus!=null && !genus.isEmpty();
+    }
+
+    public boolean hasNickName(){
+        return nickname!=null && !nickname.isEmpty();
+    }
+
+    public boolean hasLatinName(){
+        return latinName!=null && !latinName.isEmpty();
+    }
+
+    public boolean hasBinomialNomenclature(){
+        return binomialNomenclature!=null && !binomialNomenclature.isEmpty();
+    }
+    public boolean hasKingdom(){
+        return kingdom!=null && !kingdom.isEmpty();
+    }
+    public boolean hasPhylum(){
+        return phylum!=null && !phylum.isEmpty();
+    }
+    public boolean hasCategory() {
+        return category!=null && !category.isEmpty();
+    }
+
+    public boolean haspClass() {
+        return pClass!=null && !pClass.isEmpty();
+    }
+
+    public boolean hasOrder() {
+        return order!=null && !order.isEmpty();
+    }
+
+    public boolean hasNamerAge() {
+        return namerAge!=null && !namerAge.isEmpty();
+    }
+
+    public boolean hasFamily() {
+        return family!=null && !family.isEmpty();
+    }
+
+    public boolean hasDistributionArea() {
+        return distributionArea!=null && !distributionArea.isEmpty();
+    }
+
+    public boolean hasTreatmentFunctions() {
+        return treatmentFunctions!=null && !treatmentFunctions.isEmpty();
+    }
+
+    public boolean hasSpecies() {
+        return species!=null && !species.isEmpty();
+    }
+
 
 }
