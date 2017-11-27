@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.support.annotation.IdRes;
-import android.support.constraint.solver.Goal;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.treecute.plant.R;
+import com.treecute.plant.util.SetStatusbar;
 import com.treecute.plant.view.adapter.MainFragmentAdapter;
 import com.treecute.plant.databinding.MenuLeftDrawerBinding;
 import com.treecute.plant.model.User;
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SetStatusbar.setMiuiStatusBarDarkMode(MainActivity.this,true);
         initView(savedInstanceState);
         bindViews();
         checkUserLoginStatus();

@@ -52,15 +52,18 @@ public class HomePageFragment extends Fragment {
     private RecyclerView glance_recyclerView;
     private CategoryAdapter categoryAdapter;
     private PlantListAdapter plantListAdapter;
-
+    PlantApplication plantApplication;
+    PlantService plantService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_page, container, false);
         homePageBinding = DataBindingUtil.bind(view);
+        plantApplication = PlantApplication.create(view.getContext());
+        plantService = plantApplication.getPlantService();
         initBanner(view);
         initRecyclerView(view);
-        getData(view);
+        getData();
         return view;
     }
 
@@ -77,9 +80,6 @@ public class HomePageFragment extends Fragment {
     }
 
     private void initBanner(final View view) {
-        PlantApplication plantApplication = PlantApplication.create(view.getContext());
-        PlantService plantService = plantApplication.getPlantService();
-
         Disposable disposable = plantService.fetchRandPlant(PlantFactory.RAND_PLANT_URL,bannerCount)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(plantApplication.subscribeScheduler())
@@ -114,9 +114,7 @@ public class HomePageFragment extends Fragment {
         compositeDisposable.add(disposable);
     }
 
-    public void getData(View view) {
-        PlantApplication plantApplication = PlantApplication.create(view.getContext());
-        PlantService plantService = plantApplication.getPlantService();
+    public void getData() {
         Disposable disposable = plantService.fetchPlantCategory(PlantFactory.CATEGORY_LIST_URL)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(plantApplication.subscribeScheduler())

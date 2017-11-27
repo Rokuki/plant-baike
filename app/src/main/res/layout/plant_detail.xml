@@ -93,10 +93,10 @@
                                 android:layout_height="wrap_content">
 
                                 <com.mikepenz.iconics.view.IconicsImageView
+                                    style="@style/icon"
                                     android:id="@+id/name"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    app:iiv_icon="@string/faw_leaf" />
+                                    app:iiv_icon="@string/faw_leaf"
+                                    app:iiv_color="@color/colorPrimary"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -117,8 +117,8 @@
 
                                 <com.mikepenz.iconics.view.IconicsImageView
                                     android:id="@+id/latin"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    style="@style/icon"
+                                    app:iiv_color="@color/colorPrimary"
                                     app:iiv_icon="@string/faw_language" />
 
                                 <TextView
@@ -140,8 +140,8 @@
 
                                 <com.mikepenz.iconics.view.IconicsImageView
                                     android:id="@+id/namerAge"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    style="@style/icon"
+                                    app:iiv_color="@color/colorPrimary"
                                     app:iiv_icon="@string/faw_user"
                                     app:visibility="@{plantDetail.namerAgeVisibility}" />
 
@@ -173,8 +173,8 @@
 
                                 <com.mikepenz.iconics.view.IconicsImageView
                                     android:id="@+id/nickName"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    style="@style/icon"
+                                    app:iiv_color="@color/colorPrimary"
                                     app:iiv_icon="@string/faw_quote_left" />
 
                                 <TextView
@@ -196,8 +196,8 @@
 
                                 <com.mikepenz.iconics.view.IconicsImageView
                                     android:id="@+id/category"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    style="@style/icon"
+                                    app:iiv_color="@color/colorPrimary"
                                     app:iiv_icon="@string/faw_at" />
 
                                 <TextView
@@ -219,8 +219,8 @@
 
                                 <com.mikepenz.iconics.view.IconicsImageView
                                     android:id="@+id/treatmentFunctions"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    style="@style/icon"
+                                    app:iiv_color="@color/colorPrimary"
                                     app:iiv_icon="@string/faw_medkit" />
 
                                 <TextView
@@ -458,8 +458,7 @@
                             <com.mikepenz.iconics.view.IconicsImageView
                                 app:iiv_color="@color/colorPrimary"
                                 app:iiv_icon="@string/faw_pencil_square"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                style="@style/icon"
                                 android:id="@+id/iconicsImageView" />
 
                             <TextView

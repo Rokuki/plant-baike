@@ -5,11 +5,14 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.google.gson.Gson;
 import com.treecute.plant.R;
 import com.treecute.plant.databinding.PlantDetailBinding;
 import com.treecute.plant.model.Plant;
+import com.treecute.plant.util.NoStatusBar;
+import com.treecute.plant.util.SetStatusbar;
 import com.treecute.plant.viewmodel.PlantDetailViewModel;
 
 /**
@@ -23,10 +26,19 @@ public class PlantDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        NoStatusBar.SetNoStatusBar(this);
         initPlant();
         initDataBinding();
         setSupportActionBar(plantDetailBinding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initDataBinding() {

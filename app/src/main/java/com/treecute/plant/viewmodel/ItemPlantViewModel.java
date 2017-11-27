@@ -4,12 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
+import android.databinding.ObservableInt;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.treecute.plant.PlantApplication;
+import com.treecute.plant.data.PlantFactory;
+import com.treecute.plant.data.PlantResponse;
+import com.treecute.plant.data.PlantService;
 import com.treecute.plant.model.Plant;
+import com.treecute.plant.view.CategoryDetailActivity;
 import com.treecute.plant.view.PlantDetailActivity;
+import com.treecute.plant.view.adapter.PlantListAdapter;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by mkind on 2017/11/26 0026.

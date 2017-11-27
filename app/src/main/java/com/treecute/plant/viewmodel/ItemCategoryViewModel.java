@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
+import android.databinding.ObservableInt;
 import android.view.View;
 import android.widget.ImageView;
 
