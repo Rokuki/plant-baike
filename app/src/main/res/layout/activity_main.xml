@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical">
+<layout>
+    <data>
+        <variable name="main"
+            type="com.treecute.plant.viewmodel.MainViewModel">
+        </variable>
+    </data>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/fg_bottom"
@@ -76,26 +82,27 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 
         </android.support.v4.view.ViewPager>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="9dp"
-        android:background="@drawable/circle">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/circle">
 
-        <TextView
-            android:id="@+id/camera"
-            android:text="@string/camera"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textSize="30sp"
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
+            <TextView
+                android:onClick="@{main::onRecognitionClick}"
+                android:id="@+id/camera"
+                android:text="@string/camera"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
         <FrameLayout
             android:id="@+id/container"
@@ -104,5 +111,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_weight="1" />
 
     </RelativeLayout>
+</layout>
+
 
 

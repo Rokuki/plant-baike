@@ -1,5 +1,6 @@
 package com.treecute.plant.data;
 
+import com.treecute.plant.model.Plant;
 import com.treecute.plant.model.PlantCategory;
 import com.treecute.plant.model.RecognitionResult;
 
@@ -30,4 +31,5 @@ public interface PlantService {
     @Multipart
     @POST Observable<RecognitionResponse> recognition(@Url String url, @Part MultipartBody.Part file);
 
+    @GET Observable<PlantResponse> getPlantsByNameList(@Url String url,@Query("list")String names);
 }

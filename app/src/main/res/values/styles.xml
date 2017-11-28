@@ -64,5 +64,12 @@
         <item name="android:layout_height">18dp</item>
     </style>
 
+    <style name="big_title">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
 </resources>

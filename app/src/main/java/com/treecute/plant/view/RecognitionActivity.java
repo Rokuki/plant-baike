@@ -11,8 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.otaliastudios.cameraview.CameraListener;
-import com.otaliastudios.cameraview.CameraUtils;
 import com.otaliastudios.cameraview.CameraView;
 import com.treecute.plant.R;
 import com.treecute.plant.databinding.ActivityRecognitionBinding;
@@ -71,7 +69,6 @@ public class RecognitionActivity extends AppCompatActivity {
     private void initDir() {
         if (SdcardHelper.hadSdCard()){
             sdCardDir = SDCARD_DIR;
-            Toast.makeText(RecognitionActivity.this,"有内存卡",Toast.LENGTH_LONG).show();
         }else {
             sdCardDir = NOSDCARD_DIR;
         }

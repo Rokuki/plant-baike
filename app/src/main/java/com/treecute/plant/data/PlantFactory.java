@@ -14,6 +14,7 @@ public class PlantFactory {
     public final static String CATEGORY_LIST_URL = "http://120.25.1.26:97/plant/getCategoryList";
     public final static String GET_PLANT_BY_CATEGORY = "http://120.25.1.26:97/plant/getByCategory";
     public final static String UPLOAD_PLANT_PIC = "http://120.25.1.26/upload";
+    public final static String GET_PLANTS_BY_NAME_LIST = "http://120.25.1.26:97/plant/getPlantsByList";
 
     public static PlantService create(){
         Retrofit retrofit = new Retrofit.Builder()

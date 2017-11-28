@@ -1,8 +1,10 @@
 package com.treecute.plant.viewmodel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.graphics.Bitmap;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -14,12 +16,16 @@ import com.treecute.plant.PlantApplication;
 import com.treecute.plant.data.PlantFactory;
 import com.treecute.plant.data.PlantService;
 import com.treecute.plant.data.RecognitionResponse;
+import com.treecute.plant.model.RecognitionResult;
 import com.treecute.plant.util.RandomString;
 import com.treecute.plant.view.RecognitionActivity;
+import com.treecute.plant.view.RecognitionResultActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.Serializable;
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -66,12 +72,15 @@ public class RecognitionViewModel extends BaseObservable {
                                 .subscribe(new Consumer<RecognitionResponse>() {
                                     @Override
                                     public void accept(RecognitionResponse recognitionResponse) throws Exception {
-
+                                        List<RecognitionResult> resultList = recognitionResponse.getList();
+                                        Intent intent = new Intent(context,RecognitionResultActivity.class);
+                                        intent.putExtra("resultList", (Serializable) resultList);
+                                        context.startActivity(intent);
                                     }
                                 }, new Consumer<Throwable>() {
                                     @Override
                                     public void accept(Throwable throwable) throws Exception {
-
+                                        Toast.makeText(context,throwable.toString(),Toast.LENGTH_LONG).show();
                                     }
                                 });
                         compositeDisposable.add(disposable);

@@ -17,10 +17,12 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.treecute.plant.R;
+import com.treecute.plant.databinding.ActivityMainBinding;
 import com.treecute.plant.util.SetStatusbar;
 import com.treecute.plant.view.adapter.MainFragmentAdapter;
 import com.treecute.plant.databinding.MenuLeftDrawerBinding;
 import com.treecute.plant.model.User;
+import com.treecute.plant.viewmodel.MainViewModel;
 import com.treecute.plant.viewmodel.UserViewModel;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -33,11 +35,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private RadioButton tab_home,tab_global;
     private boolean is_login = false;
     private MenuLeftDrawerBinding menuLeftDrawerBinding;
+    private ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        activityMainBinding = DataBindingUtil.setContentView(MainActivity.this,R.layout.activity_main);
+        activityMainBinding.setMain(new MainViewModel(MainActivity.this));
         SetStatusbar.setMiuiStatusBarDarkMode(MainActivity.this,true);
         initView(savedInstanceState);
         bindViews();
