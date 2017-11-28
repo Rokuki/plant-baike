@@ -1,14 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="recognition"
             type="com.treecute.plant.viewmodel.RecognitionViewModel">
         </variable>
     </data>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <com.otaliastudios.cameraview.CameraView
+                android:id="@+id/camera"
+                android:keepScreenOn="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
+
+                <View
+                    android:background="@color/black_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:id="@+id/view" />
+
+                <View
+                    android:background="@color/black_filter"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/view"
+                    android:id="@+id/view2"
+                    android:layout_above="@+id/view4" />
+
+                <View
+                    android:background="@color/black_filter"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/view"
+                    android:id="@+id/view3" />
+                <View
+                    android:background="@color/black_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toStartOf="@+id/view3"
+                    android:id="@+id/view4" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <com.rey.material.widget.Button
+                android:onClick="@{recognition::onTakePicClick}"
+                style="@style/Material.Drawable.Ripple.Wave.Light"
+                android:background="@drawable/logo"
+                android:layout_gravity="center"
+                android:id="@+id/pai"
+                android:layout_width="46dp"
+                android:layout_height="50.6dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
 
 
     </LinearLayout>
