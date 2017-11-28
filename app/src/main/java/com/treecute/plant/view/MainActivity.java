@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -36,6 +38,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private boolean is_login = false;
     private MenuLeftDrawerBinding menuLeftDrawerBinding;
     private ActivityMainBinding activityMainBinding;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +86,16 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId()==R.id.search_action){
+                    Intent intent1 = new Intent(MainActivity.this,SearchActivity.class);
+                    startActivity(intent1);
+                }
+                return true;
+            }
+        });
 
         LayoutInflater layoutInflater = getLayoutInflater();
         View menu = layoutInflater.inflate(R.layout.menu_left_drawer,null);

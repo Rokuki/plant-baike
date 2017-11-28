@@ -54,8 +54,6 @@ public class RecognitionResultActivity extends AppCompatActivity {
         initDataBinding();
         initToolbar();
         getData();
-        Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/Georgia.ttf");
-        binding.possibility.setTypeface(tf);
     }
 
     private void initToolbar() {

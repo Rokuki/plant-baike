@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <android.support.v7.widget.Toolbar
+                android:title="识别结果"
                 android:id="@+id/toolbar"
                 android:background="@color/white"
                 android:layout_width="match_parent"
@@ -22,19 +23,39 @@
         </android.support.design.widget.AppBarLayout>
 
         <TextView
+            android:layout_weight="0.5"
             android:id="@+id/possibility"
-            android:layout_margin="30dp"
+            android:layout_margin="15dp"
             android:layout_gravity="center"
             style="@style/big_title"
             android:text="@{recognitionResult.possibility}"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp" />
 
         <com.yarolegovich.discretescrollview.DiscreteScrollView
+            android:layout_weight="5"
             android:id="@+id/picker"
             android:layout_width="match_parent"
-            android:layout_height="360dp"
+            android:layout_height="0dp"
             app:dsv_orientation="horizontal" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.rey.material.widget.Button
+                style="@style/Material.Drawable.Ripple.Wave.Light"
+                android:background="@drawable/logo"
+                android:layout_gravity="center"
+                android:id="@+id/pai"
+                android:layout_width="46dp"
+                android:layout_height="50.6dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
 
     </LinearLayout>
 </layout>

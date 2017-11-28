@@ -45,6 +45,9 @@
         <activity android:name=".view.RecognitionResultActivity">
 
         </activity>
+        <activity android:name=".view.SearchActivity">
+
+        </activity>
     </application>
 
 </manifest>
