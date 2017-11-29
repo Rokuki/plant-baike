@@ -7,8 +7,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.treecute.plant.R;
 import com.treecute.plant.databinding.ActivitySearchResultBinding;
@@ -47,7 +53,22 @@ public class SearchResultActivity extends AppCompatActivity {
         plantListAdapter = new PlantListAdapter();
         plantListAdapter.setPlantList(plantList);
         recyclerView.setAdapter(plantListAdapter);
+        if (plantList == null) {
+            activitySearchResultBinding.notFoundLayout.setVisibility(View.VISIBLE);
+            activitySearchResultBinding.notFound.setText("找不到“" + query + "”");
+            TextView recommand = activitySearchResultBinding.recommand;
+            SpannableString spannableString = new SpannableString("试试简介搜索,可搜索地区、功效哦");
+            MyClickableSpan clickableSpan = new MyClickableSpan();
+            spannableString.setSpan(clickableSpan, 2, 6, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+            recommand.setMovementMethod(LinkMovementMethod.getInstance());
+            recommand.setHighlightColor(getResources().getColor(R.color.colorPrimary));
+            recommand.setText(spannableString);
+        } else {
+            activitySearchResultBinding.notFoundLayout.setVisibility(View.GONE);
+        }
+
     }
+
 
     private void initPlantList() {
         Intent intent = getIntent();
@@ -61,5 +82,12 @@ public class SearchResultActivity extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private class MyClickableSpan extends ClickableSpan {
+        @Override
+        public void onClick(View widget) {
+            finish();
+        }
     }
 }

@@ -55,6 +55,7 @@ public class SearchActivity extends AppCompatActivity {
         plantService = plantApplication.getPlantService();
         initSearchView();
         if (searchView!=null){
+            searchView.open(true);
             initOnQueryTextListener();
             initSearchItemClick();
             initVoice();
