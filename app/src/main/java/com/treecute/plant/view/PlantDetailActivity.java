@@ -7,12 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.google.gson.Gson;
 import com.treecute.plant.R;
-import com.treecute.plant.databinding.PlantDetailBinding;
+import com.treecute.plant.databinding.ActivityPlantDetailBinding;
 import com.treecute.plant.model.Plant;
 import com.treecute.plant.util.NoStatusBar;
-import com.treecute.plant.util.SetStatusbar;
 import com.treecute.plant.viewmodel.PlantDetailViewModel;
 
 /**
@@ -21,7 +19,7 @@ import com.treecute.plant.viewmodel.PlantDetailViewModel;
 
 public class PlantDetailActivity extends AppCompatActivity {
     private Plant plant;
-    private PlantDetailBinding plantDetailBinding;
+    private ActivityPlantDetailBinding plantDetailBinding;
     private PlantDetailViewModel plantDetailViewModel;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +40,7 @@ public class PlantDetailActivity extends AppCompatActivity {
     }
 
     private void initDataBinding() {
-        plantDetailBinding = DataBindingUtil.setContentView(this,R.layout.plant_detail);
+        plantDetailBinding = DataBindingUtil.setContentView(this,R.layout.activity_plant_detail);
         plantDetailViewModel = new PlantDetailViewModel(this,plant);
         plantDetailBinding.setPlantDetail(plantDetailViewModel);
     }

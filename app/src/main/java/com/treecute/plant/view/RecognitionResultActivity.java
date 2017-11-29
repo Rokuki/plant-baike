@@ -57,6 +57,7 @@ public class RecognitionResultActivity extends AppCompatActivity {
     }
 
     private void initToolbar() {
+        binding.toolbar.setTitle(R.string.recognition_result);
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -74,6 +75,7 @@ public class RecognitionResultActivity extends AppCompatActivity {
                 .setPivotX(Pivot.X.CENTER) // CENTER is a default one
                 .setPivotY(Pivot.Y.BOTTOM) // CENTER is a default one
                 .build());
+        discreteScrollView.setItemTransitionTimeMillis(200);
         discreteScrollView.addScrollStateChangeListener(new DiscreteScrollView.ScrollStateChangeListener<RecyclerView.ViewHolder>() {
             @Override
             public void onScrollStart(@NonNull RecyclerView.ViewHolder currentItemHolder, int adapterPosition) {

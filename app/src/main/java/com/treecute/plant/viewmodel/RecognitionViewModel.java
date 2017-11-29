@@ -3,6 +3,8 @@ package com.treecute.plant.viewmodel;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
+import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
 import android.graphics.Bitmap;
 import android.os.Parcelable;
 import android.util.Log;
@@ -13,6 +15,7 @@ import com.otaliastudios.cameraview.CameraListener;
 import com.otaliastudios.cameraview.CameraUtils;
 import com.otaliastudios.cameraview.CameraView;
 import com.treecute.plant.PlantApplication;
+import com.treecute.plant.R;
 import com.treecute.plant.data.PlantFactory;
 import com.treecute.plant.data.PlantService;
 import com.treecute.plant.data.RecognitionResponse;
@@ -44,13 +47,16 @@ public class RecognitionViewModel extends BaseObservable {
     private Context context;
     private CameraView cameraView;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-
+    public ObservableInt loading;
+    public ObservableInt loadingHintVisibility;
 
     public RecognitionViewModel(Context context, CameraView cameraView, String sdCardDir) {
         this.context = context;
         this.cameraView = cameraView;
         this.sdCardDir = sdCardDir;
         initCamera();
+        loading = new ObservableInt(View.GONE);
+        loadingHintVisibility = new ObservableInt(View.GONE);
     }
 
     private void initCamera() {
@@ -63,7 +69,6 @@ public class RecognitionViewModel extends BaseObservable {
                         File file = new File(saveBitmapToLocalDir(bitmap));
                         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"),file);
                         MultipartBody.Part body = MultipartBody.Part.createFormData("file",file.getName(),requestBody);
-
                         PlantApplication plantApplication = PlantApplication.create(context);
                         PlantService plantService = plantApplication.getPlantService();
                         Disposable disposable = plantService.recognition(PlantFactory.UPLOAD_PLANT_PIC,body)
@@ -72,6 +77,8 @@ public class RecognitionViewModel extends BaseObservable {
                                 .subscribe(new Consumer<RecognitionResponse>() {
                                     @Override
                                     public void accept(RecognitionResponse recognitionResponse) throws Exception {
+                                        loading.set(View.GONE);
+                                        loadingHintVisibility.set(View.GONE);
                                         List<RecognitionResult> resultList = recognitionResponse.getList();
                                         Intent intent = new Intent(context,RecognitionResultActivity.class);
                                         intent.putExtra("resultList", (Serializable) resultList);
@@ -92,6 +99,8 @@ public class RecognitionViewModel extends BaseObservable {
 
     public void onTakePicClick(View view){
         cameraView.captureSnapshot();
+        loading.set(View.VISIBLE);
+        loadingHintVisibility.set(View.VISIBLE);
     }
 
     private String saveBitmapToLocalDir(Bitmap bitmap) {

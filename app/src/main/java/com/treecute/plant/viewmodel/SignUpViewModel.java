@@ -87,7 +87,7 @@ public class SignUpViewModel extends BaseObservable {
     public void sign_up(View view){
 
         if (username_valid&password_valid){
-            String token = "treecute" + "POST" + "sign_up" + "1748" + username;//秘钥
+            String token = "treecute" + "POST" + "activity_sign_up" + "1748" + username;//秘钥
             String md5_token = MD5.MD5Encode(token);
             PlantApplication plantApplication = PlantApplication.create(context);
             UserService userService = plantApplication.getUserService();
@@ -95,7 +95,7 @@ public class SignUpViewModel extends BaseObservable {
             data.put("username",username);
             data.put("password",password);
             data.put("user_token",md5_token);
-            Log.d(TAG, "sign_up: "+md5_token);
+            Log.d(TAG, "activity_sign_up: "+md5_token);
             Disposable disposable = userService.signUp(UserFactory.SIGN_UP_URL,data)
                     .subscribeOn(plantApplication.subscribeScheduler())
                     .observeOn(AndroidSchedulers.mainThread())

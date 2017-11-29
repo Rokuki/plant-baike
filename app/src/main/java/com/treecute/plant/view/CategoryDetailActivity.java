@@ -1,15 +1,12 @@
 package com.treecute.plant.view;
 
 import android.content.Intent;
-import android.database.DatabaseUtils;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -18,12 +15,11 @@ import com.treecute.plant.R;
 import com.treecute.plant.data.PlantFactory;
 import com.treecute.plant.data.PlantResponse;
 import com.treecute.plant.data.PlantService;
-import com.treecute.plant.databinding.CategoryDetailBinding;
+import com.treecute.plant.databinding.ActivityCategoryDetailBinding;
 import com.treecute.plant.model.PlantCategory;
 import com.treecute.plant.util.NoStatusBar;
 import com.treecute.plant.view.adapter.PlantListAdapter;
 import com.treecute.plant.viewmodel.ItemCategoryViewModel;
-import com.treecute.plant.viewmodel.ItemPlantViewModel;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -35,7 +31,7 @@ import io.reactivex.functions.Consumer;
  */
 
 public class CategoryDetailActivity extends AppCompatActivity {
-    CategoryDetailBinding categoryDetailBinding;
+    ActivityCategoryDetailBinding categoryDetailBinding;
     private PlantCategory plantCategory;
     private PlantListAdapter plantListAdapter;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -96,7 +92,7 @@ public class CategoryDetailActivity extends AppCompatActivity {
     }
 
     private void initDataBinding() {
-        categoryDetailBinding = DataBindingUtil.setContentView(this,R.layout.category_detail);
+        categoryDetailBinding = DataBindingUtil.setContentView(this,R.layout.activity_category_detail);
         ItemCategoryViewModel itemCategoryViewModel = new ItemCategoryViewModel(plantCategory,this);
         categoryDetailBinding.setCategory(itemCategoryViewModel);
     }

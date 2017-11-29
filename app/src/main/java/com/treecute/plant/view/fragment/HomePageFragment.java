@@ -17,7 +17,7 @@ import com.treecute.plant.R;
 import com.treecute.plant.data.PlantFactory;
 import com.treecute.plant.data.PlantResponse;
 import com.treecute.plant.data.PlantService;
-import com.treecute.plant.databinding.HomePageBinding;
+import com.treecute.plant.databinding.FragmentHomeBinding;
 import com.treecute.plant.model.Plant;
 import com.treecute.plant.model.PlantCategory;
 import com.treecute.plant.util.ImagesLoader;
@@ -44,7 +44,7 @@ import static android.content.ContentValues.TAG;
  */
 
 public class HomePageFragment extends Fragment {
-    private HomePageBinding homePageBinding;
+    private FragmentHomeBinding homePageBinding;
     private List<String> imgs = new ArrayList<>();
     private int bannerCount = 6;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -57,7 +57,7 @@ public class HomePageFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         homePageBinding = DataBindingUtil.bind(view);
         plantApplication = PlantApplication.create(view.getContext());
         plantService = plantApplication.getPlantService();

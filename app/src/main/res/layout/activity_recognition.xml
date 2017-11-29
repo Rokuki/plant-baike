@@ -72,8 +72,36 @@
 
             </RelativeLayout>
 
+            <com.wang.avi.AVLoadingIndicatorView
+                android:padding="150dp"
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/AVLoadingIndicatorView"
+                app:visibility="@{recognition.loading}"
+                app:indicatorName="PacmanIndicator"
+                app:indicatorColor="@color/white"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                style="@style/big_title"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:visibility="@{recognition.loadingHintVisibility}"
+                android:text="@string/recognizing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="175dp" />
+
 
         </RelativeLayout>
+
+
 
 
         <RelativeLayout

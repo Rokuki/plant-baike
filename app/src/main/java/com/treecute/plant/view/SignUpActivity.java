@@ -4,14 +4,11 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.WindowManager;
 
 import com.treecute.plant.R;
-import com.treecute.plant.databinding.SignUpBinding;
-import com.treecute.plant.model.User;
+import com.treecute.plant.databinding.ActivitySignUpBinding;
 import com.treecute.plant.viewmodel.SignUpViewModel;
-import com.treecute.plant.viewmodel.UserViewModel;
 
 /**
  * Created by mkind on 2017/11/22 0022.
@@ -19,7 +16,7 @@ import com.treecute.plant.viewmodel.UserViewModel;
 
 public class SignUpActivity extends AppCompatActivity {
     String TAG = "CBC";
-    private SignUpBinding signUpBinding;
+    private ActivitySignUpBinding signUpBinding;
     private SignUpViewModel signUpViewModel;
 
     @Override
@@ -32,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void initDataBinding() {
-        signUpBinding = DataBindingUtil.setContentView(this,R.layout.sign_up);
+        signUpBinding = DataBindingUtil.setContentView(this,R.layout.activity_sign_up);
         signUpViewModel = new SignUpViewModel(this);
         signUpBinding.setSignUpViewModel(signUpViewModel);
     }

@@ -3,4 +3,8 @@
     <string name="home">&#xf0005;</string>
     <string name="find">&#xf0029;</string>
     <string name="camera">&#xe602;</string>
+    <string name="search">请输入搜索词</string>
+    <string name="recognizing">识别中…</string>
+    <string name="recognition_result">识别结果</string>
+    <string name="search_hint">搜索结果</string>
 </resources>

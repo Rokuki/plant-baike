@@ -45,6 +45,7 @@
             android:layout_weight="1">
 
             <com.rey.material.widget.Button
+                android:onClick="@{recognitionResult::back}"
                 style="@style/Material.Drawable.Ripple.Wave.Light"
                 android:background="@drawable/logo"
                 android:layout_gravity="center"

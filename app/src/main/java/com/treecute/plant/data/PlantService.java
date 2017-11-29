@@ -1,14 +1,15 @@
 package com.treecute.plant.data;
 
-import com.treecute.plant.model.Plant;
+
+import android.databinding.ObservableInt;
+
 import com.treecute.plant.model.PlantCategory;
-import com.treecute.plant.model.RecognitionResult;
+import com.treecute.plant.model.SearchSuggestions;
 
 import java.util.List;
 
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -23,13 +24,10 @@ import retrofit2.http.Url;
 public interface PlantService {
 
     @GET Observable<PlantResponse> fetchRandPlant(@Url String url, @Query("count")int count);
-
     @GET Observable<PlantResponse> fetchPlantByCategory(@Url String url,@Query("category")String category);
-
     @GET Observable<List<PlantCategory>> fetchPlantCategory(@Url String url);
-
-    @Multipart
-    @POST Observable<RecognitionResponse> recognition(@Url String url, @Part MultipartBody.Part file);
-
+    @Multipart @POST Observable<RecognitionResponse> recognition(@Url String url, @Part MultipartBody.Part file);
     @GET Observable<PlantResponse> getPlantsByNameList(@Url String url,@Query("list")String names);
+    @GET Observable<List<SearchSuggestions>> getSearchSuggestionsList(@Url String url, @Query("key")String key);
+    @GET Observable<PlantResponse> getPlantBySearchPlace(@Url String url,@Query("key")String key,@Query("search_place")String searchPlace);
 }

@@ -13,6 +13,21 @@ public class Permissions {
     private static String[] PERMISSIONS_STORAGE = {
             "android.permission.READ_EXTERNAL_STORAGE",
             "android.permission.WRITE_EXTERNAL_STORAGE" };
+    private static final int RECORD_AUDIO = 1;
+    private static String[] PERMISSION_RECORD_AUDIO = {
+            "android.permission.RECORD_AUDIO"
+    };
+
+    public static void verifyRecordAudioPermissions(Activity activity){
+        try {
+            int permission = ActivityCompat.checkSelfPermission(activity,PERMISSION_RECORD_AUDIO[0]);
+            if (permission!=PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(activity,PERMISSION_RECORD_AUDIO,RECORD_AUDIO);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public static void verifyStoragePermissions(Activity activity) {
 
