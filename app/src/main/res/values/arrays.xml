@@ -13,4 +13,13 @@
         <item>#22AC38</item>
         <item>#22AC38</item>
     </string-array>
+    <string-array name="colors">
+        <item>#656461</item>
+        <item>#545745</item>
+        <item>#d89415</item>
+    </string-array>
+    <string-array name="titles">
+        <item>title</item>
+        <item>title2</item>
+    </string-array>
 </resources>

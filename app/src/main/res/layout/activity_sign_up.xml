@@ -17,6 +17,7 @@
         android:background="@mipmap/login">
 
         <android.support.design.widget.AppBarLayout
+            app:elevation="0dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#00000000"
