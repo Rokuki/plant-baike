@@ -34,6 +34,16 @@ public class Plant implements Serializable{
     @SerializedName("summary") public String summary;
     @SerializedName("categoryPic") public String categoryPic;
     @SerializedName("categoryPicS") public String categoryPicS;
+    @SerializedName("collection")
+    public Integer collection;
+
+    public Integer getCollection() {
+        return collection;
+    }
+
+    public void setCollection(Integer collection) {
+        this.collection = collection;
+    }
 
     public String getCategoryPic() {
         return categoryPic;

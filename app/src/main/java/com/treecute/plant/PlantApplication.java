@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.mikepenz.iconics.Iconics;
+import com.treecute.plant.data.GoodsFactory;
+import com.treecute.plant.data.GoodsService;
 import com.treecute.plant.data.PlantFactory;
 import com.treecute.plant.data.PlantService;
 import com.treecute.plant.data.UserFactory;
@@ -19,7 +21,9 @@ import io.reactivex.schedulers.Schedulers;
 public class PlantApplication extends Application {
     private PlantService plantService;
     private UserService userService;
+    private GoodsService goodsService;
     private Scheduler scheduler;
+
 
     @Override
     public void onCreate() {
@@ -35,6 +39,7 @@ public class PlantApplication extends Application {
         return PlantApplication.get(context);
     }
 
+
     public PlantService getPlantService(){
         if (plantService==null){
             plantService = PlantFactory.create();
@@ -47,6 +52,13 @@ public class PlantApplication extends Application {
             userService = UserFactory.create();
         }
         return userService;
+    }
+
+    public GoodsService getGoodsService() {
+        if (goodsService == null) {
+            goodsService = GoodsFactory.create();
+        }
+        return goodsService;
     }
 
     public Scheduler subscribeScheduler(){

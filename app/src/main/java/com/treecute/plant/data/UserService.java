@@ -20,6 +20,11 @@ import retrofit2.http.Url;
 
 public interface UserService {
 
+    @GET
+    Observable<ResponseResult> checkLogin(@Url String url,
+                                          @Query("token") String token,
+                                          @Query("username") String username);
+
     @FormUrlEncoded
     @POST Observable<IntegerResponse> signUp(@Url String url, @FieldMap Map<String,String> data);
 

@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,15 +19,25 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.treecute.plant.PlantApplication;
 import com.treecute.plant.R;
+import com.treecute.plant.data.UserFactory;
+import com.treecute.plant.data.UserService;
 import com.treecute.plant.databinding.ActivityMainBinding;
+import com.treecute.plant.model.ResponseResult;
 import com.treecute.plant.util.SetStatusbar;
+import com.treecute.plant.util.TAG;
 import com.treecute.plant.view.adapter.MainFragmentAdapter;
 import com.treecute.plant.databinding.MenuLeftDrawerBinding;
 import com.treecute.plant.model.User;
 import com.treecute.plant.viewmodel.MainViewModel;
 import com.treecute.plant.viewmodel.UserViewModel;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener {
 
@@ -38,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private boolean is_login = false;
     private MenuLeftDrawerBinding menuLeftDrawerBinding;
     private ActivityMainBinding activityMainBinding;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,21 +70,48 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     private void checkUserLoginStatus(){
-        SharedPreferences sharedPreferences = this.getSharedPreferences("user",MODE_PRIVATE);
+        final SharedPreferences sharedPreferences = this.getSharedPreferences("user", MODE_PRIVATE);
         if (!is_login){
             //未确认，取存储看是否已经登录
             String access_token = sharedPreferences.getString("access_token",null);
-            is_login = access_token != null;
+            if (access_token != null) {
+                Gson gson = new Gson();
+                String userJson = sharedPreferences.getString("userJson", null);
+                User user = gson.fromJson(userJson, User.class);
+                PlantApplication plantApplication = PlantApplication.create(this);
+                UserService userService = plantApplication.getUserService();
+                Disposable disposable = userService.checkLogin(UserFactory.CHECK_LOGIN, access_token, user.getUsername())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(plantApplication.subscribeScheduler())
+                        .subscribe(new Consumer<ResponseResult>() {
+                            @Override
+                            public void accept(ResponseResult responseResult) throws Exception {
+                                is_login = responseResult.getMessage().equals("success");
+                                isLogin(sharedPreferences);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                Log.d(com.treecute.plant.util.TAG.TAG, "accept: " + throwable.toString());
+                            }
+                        });
+                compositeDisposable.add(disposable);
+            }
+        } else {
+            isLogin(sharedPreferences);
         }
+    }
+
+    private void isLogin(SharedPreferences sharedPreferences) {
         if (is_login){
             Gson gson = new Gson();
             String userJson = sharedPreferences.getString("userJson",null);
             User user = gson.fromJson(userJson,User.class);
-            UserViewModel userViewModel = new UserViewModel(user,this);
+            UserViewModel userViewModel = new UserViewModel(user, MainActivity.this);
             menuLeftDrawerBinding.setUserViewModel(userViewModel);
         }else {
             User user = new User();
-            UserViewModel userViewModel = new UserViewModel(this);
+            UserViewModel userViewModel = new UserViewModel(MainActivity.this);
             userViewModel.setUser(user);
             menuLeftDrawerBinding.setUserViewModel(userViewModel);
         }

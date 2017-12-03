@@ -1,5 +1,6 @@
 package com.treecute.plant.view.fragment;
 
+import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +13,10 @@ import android.view.ViewGroup;
 
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
 import com.treecute.plant.R;
+import com.treecute.plant.databinding.FragmentSecondBinding;
 import com.treecute.plant.util.TAG;
 import com.treecute.plant.view.adapter.MarketFragmentAdapter;
+import com.treecute.plant.viewmodel.SecondFragmentViewModel;
 
 
 /**
@@ -25,10 +28,15 @@ public class SecondPageFragment extends Fragment implements ViewPager.OnPageChan
     public static final int PAGE_TWO = 1;
     private MarketFragmentAdapter adapter;
     private ViewPager viewPager;
+    private FragmentSecondBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_second,container,false);
+        binding = DataBindingUtil.bind(view);
+        SecondFragmentViewModel viewModel = new SecondFragmentViewModel(view.getContext());
+        binding.setSecond(viewModel);
         initView(view);
         return view;
     }

@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.Toast;
 
 import com.treecute.plant.PlantApplication;
@@ -63,8 +65,19 @@ public class HomePageFragment extends Fragment {
         plantService = plantApplication.getPlantService();
         initBanner(view);
         initRecyclerView(view);
+        initView();
         getData();
+        getPlantList();
         return view;
+    }
+
+    private void initView() {
+        homePageBinding.refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getPlantList();
+            }
+        });
     }
 
     private void initRecyclerView(View view) {
@@ -130,6 +143,9 @@ public class HomePageFragment extends Fragment {
                     }
                 });
         compositeDisposable.add(disposable);
+    }
+
+    public void getPlantList() {
         Disposable getPlantDisposable = plantService.fetchRandPlant(PlantFactory.RAND_PLANT_URL,20)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(plantApplication.subscribeScheduler())
