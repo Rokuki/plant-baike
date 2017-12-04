@@ -21,6 +21,10 @@ public class Goods {
     public Integer collection;
     @SerializedName("plantId")
     public Integer plantId;
+    @SerializedName("user")
+    public User user;
+    @SerializedName("plant")
+    public Plant plant;
 
     public Goods() {
     }
@@ -39,6 +43,26 @@ public class Goods {
         this.title = title;
         this.content = content;
         this.plantId = plantId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Plant getPlant() {
+        return plant;
+    }
+
+    public void setPlant(Plant plant) {
+        if (plant.getName() == null) {
+            this.plant = null;
+        } else {
+            this.plant = plant;
+        }
     }
 
     public Integer getId() {

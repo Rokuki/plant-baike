@@ -14,6 +14,7 @@ public class GoodsResponse {
     @SerializedName("data")
     private List<Goods> goodsList;
 
+
     public List<Goods> getGoodsList() {
         return goodsList;
     }

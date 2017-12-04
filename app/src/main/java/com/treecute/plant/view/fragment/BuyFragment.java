@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.treecute.plant.data.GoodsFactory;
 import com.treecute.plant.data.GoodsResponse;
 import com.treecute.plant.data.GoodsService;
 import com.treecute.plant.databinding.FragmentBuyBinding;
+import com.treecute.plant.util.TAG;
 import com.treecute.plant.view.adapter.GoodsAdapter;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

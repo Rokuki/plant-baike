@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import com.treecute.plant.R;
 import com.treecute.plant.databinding.ItemGoodsBinding;
 import com.treecute.plant.model.Goods;
+import com.treecute.plant.model.Plant;
+import com.treecute.plant.model.User;
 import com.treecute.plant.viewmodel.ItemGoodsViewModel;
 
 import java.util.Collections;
@@ -37,7 +39,7 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.GoodsAdapter
 
     @Override
     public void onBindViewHolder(GoodsAdapterViewHolder holder, int position) {
-        holder.bindGoods(goodsList.get(position));
+        holder.bindGoods(goodsList.get(position), goodsList.get(position).getPlant(), goodsList.get(position).getUser());
     }
 
     @Override
@@ -53,11 +55,11 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.GoodsAdapter
             this.itemGoodsBinding = itemView;
         }
 
-        void bindGoods(Goods goods) {
+        void bindGoods(Goods goods, Plant plant, User user) {
             if (itemGoodsBinding.getGoods() == null) {
-                itemGoodsBinding.setGoods(new ItemGoodsViewModel(itemView.getContext(), goods));
+                itemGoodsBinding.setGoods(new ItemGoodsViewModel(itemView.getContext(), goods, plant, user));
             } else {
-                itemGoodsBinding.getGoods().setGoods(goods);
+                itemGoodsBinding.getGoods().setModel(goods, plant, user);
             }
         }
     }

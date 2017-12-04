@@ -52,6 +52,10 @@
         <activity android:name=".view.SearchResultActivity">
 
         </activity>
+        <activity android:name=".view.PublishGoodsActivity">
+
+        </activity>
+        <activity android:name=".view.PickPlantActivity"></activity>
     </application>
 
 </manifest>
