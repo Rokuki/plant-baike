@@ -4,11 +4,11 @@
     package="com.treecute.plant">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
@@ -19,7 +19,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,35 +26,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.LoginActivity">
-
-        </activity>
-        <activity android:name=".view.SignUpActivity">
-
-        </activity>
-        <activity android:name=".view.PlantDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".view.CategoryDetailActivity">
-
-        </activity>
-        <activity android:name=".view.RecognitionActivity">
-
-        </activity>
-        <activity android:name=".view.RecognitionResultActivity">
-
-        </activity>
-        <activity android:name=".view.SearchActivity">
-
-        </activity>
-        <activity android:name=".view.SearchResultActivity">
-
-        </activity>
-        <activity android:name=".view.PublishGoodsActivity">
-
-        </activity>
-        <activity android:name=".view.PickPlantActivity"></activity>
+        <activity android:name=".view.LoginActivity"></activity>
+        <activity android:name=".view.SignUpActivity"></activity>
+        <activity
+            android:name=".view.PlantDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".view.CategoryDetailActivity"></activity>
+        <activity android:name=".view.RecognitionActivity"></activity>
+        <activity android:name=".view.RecognitionResultActivity"></activity>
+        <activity android:name=".view.SearchActivity"></activity>
+        <activity android:name=".view.SearchResultActivity"></activity>
+        <activity android:name=".view.PublishGoodsActivity"></activity>
+        <activity android:name=".view.PickPlantActivity" />
+        <activity android:name=".view.GoodsDetail"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.treecute.plant.viewmodel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.util.Log;
@@ -12,6 +13,7 @@ import com.treecute.plant.model.Goods;
 import com.treecute.plant.model.Plant;
 import com.treecute.plant.model.User;
 import com.treecute.plant.util.TAG;
+import com.treecute.plant.view.GoodsDetail;
 
 /**
  * Created by mkind on 2017/12/2 0002.
@@ -31,7 +33,11 @@ public class ItemGoodsViewModel extends BaseObservable {
     }
 
     public void onGoodsItemClick(View view) {
-        Log.d(TAG.TAG, "onGoodsItemClick: ");
+        Intent intent = new Intent(context, GoodsDetail.class);
+        intent.putExtra("goods", goods);
+        intent.putExtra("plant", plant);
+        intent.putExtra("user", user);
+        context.startActivity(intent);
     }
     
     public String getTitle() {

@@ -2,7 +2,9 @@ package com.treecute.plant.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Goods {
+import java.io.Serializable;
+
+public class Goods implements Serializable {
     @SerializedName("id")
     public Integer id;
     @SerializedName("sellerId")
