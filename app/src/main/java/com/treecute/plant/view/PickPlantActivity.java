@@ -19,6 +19,7 @@ import com.treecute.plant.data.PlantResponse;
 import com.treecute.plant.data.PlantService;
 import com.treecute.plant.databinding.ActivityPickPlantBinding;
 import com.treecute.plant.model.Plant;
+import com.treecute.plant.util.NoStatusBar;
 import com.treecute.plant.view.adapter.PickPlantAdapter;
 import com.treecute.plant.view.listener.OnPlantItemSelectListener;
 import com.treecute.plant.viewmodel.PickPlantViewModel;

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.treecute.plant.R;
 import com.treecute.plant.databinding.ActivitySearchResultBinding;
 import com.treecute.plant.model.Plant;
+import com.treecute.plant.util.NoStatusBar;
 import com.treecute.plant.util.TAG;
 import com.treecute.plant.view.adapter.PlantListAdapter;
 

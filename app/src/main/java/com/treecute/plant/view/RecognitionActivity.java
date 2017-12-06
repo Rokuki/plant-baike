@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.otaliastudios.cameraview.CameraView;
 import com.treecute.plant.R;
 import com.treecute.plant.databinding.ActivityRecognitionBinding;
+import com.treecute.plant.util.NoStatusBar;
 import com.treecute.plant.util.Permissions;
 import com.treecute.plant.util.SdcardHelper;
 import com.treecute.plant.viewmodel.RecognitionViewModel;

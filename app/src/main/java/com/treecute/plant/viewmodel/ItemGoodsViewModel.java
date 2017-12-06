@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -12,8 +11,7 @@ import com.bumptech.glide.Glide;
 import com.treecute.plant.model.Goods;
 import com.treecute.plant.model.Plant;
 import com.treecute.plant.model.User;
-import com.treecute.plant.util.TAG;
-import com.treecute.plant.view.GoodsDetail;
+import com.treecute.plant.view.GoodsDetailActivity;
 
 /**
  * Created by mkind on 2017/12/2 0002.
@@ -33,15 +31,19 @@ public class ItemGoodsViewModel extends BaseObservable {
     }
 
     public void onGoodsItemClick(View view) {
-        Intent intent = new Intent(context, GoodsDetail.class);
+        Intent intent = new Intent(context, GoodsDetailActivity.class);
         intent.putExtra("goods", goods);
         intent.putExtra("plant", plant);
         intent.putExtra("user", user);
         context.startActivity(intent);
     }
-    
+
     public String getTitle() {
         return goods.getTitle();
+    }
+
+    public String getContent() {
+        return goods.getContent();
     }
 
     public String getPrice() {
@@ -49,7 +51,7 @@ public class ItemGoodsViewModel extends BaseObservable {
     }
 
     public String getQuantity() {
-        return String.valueOf(goods.quantity);
+        return "剩余" + String.valueOf(goods.quantity);
     }
 
     public String getSaleCount() {

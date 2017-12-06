@@ -21,6 +21,7 @@ import com.treecute.plant.data.PlantResponse;
 import com.treecute.plant.data.PlantService;
 import com.treecute.plant.databinding.ActivitySearchBinding;
 import com.treecute.plant.model.SearchSuggestions;
+import com.treecute.plant.util.NoStatusBar;
 import com.treecute.plant.util.Permissions;
 import com.treecute.plant.util.TAG;
 

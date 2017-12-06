@@ -18,6 +18,7 @@ import com.treecute.plant.data.PlantService;
 import com.treecute.plant.databinding.ActivityRecognitionResultBinding;
 import com.treecute.plant.model.Plant;
 import com.treecute.plant.model.RecognitionResult;
+import com.treecute.plant.util.NoStatusBar;
 import com.treecute.plant.util.TAG;
 import com.treecute.plant.view.adapter.RecognitionResultAdapter;
 import com.treecute.plant.viewmodel.ItemRecognitionResultViewModel;

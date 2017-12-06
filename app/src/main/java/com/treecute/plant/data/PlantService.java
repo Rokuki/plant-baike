@@ -4,6 +4,8 @@ package com.treecute.plant.data;
 import android.databinding.ObservableInt;
 
 import com.treecute.plant.model.PlantCategory;
+import com.treecute.plant.model.Response;
+import com.treecute.plant.model.ResponseResult;
 import com.treecute.plant.model.SearchSuggestions;
 
 import java.util.List;
@@ -30,4 +32,26 @@ public interface PlantService {
     @GET Observable<PlantResponse> getPlantsByNameList(@Url String url,@Query("list")String names);
     @GET Observable<List<SearchSuggestions>> getSearchSuggestionsList(@Url String url, @Query("key")String key);
     @GET Observable<PlantResponse> getPlantBySearchPlace(@Url String url,@Query("key")String key,@Query("search_place")String searchPlace);
+
+    @GET
+    Observable<ResponseResult<Response>> getIfCollected(@Url String url,
+                                                        @Query("token") String token,
+                                                        @Query("username") String username,
+                                                        @Query("userId") int userId,
+                                                        @Query("plantId") int plantId);
+
+    @POST
+    Observable<ResponseResult<Response>> addToCollection(@Url String url,
+                                                         @Query("token") String token,
+                                                         @Query("username") String username,
+                                                         @Query("userId") int userId,
+                                                         @Query("plantId") int plantId);
+
+    @POST
+    Observable<ResponseResult<Response>> removeCollection(@Url String url,
+                                                          @Query("token") String token,
+                                                          @Query("username") String username,
+                                                          @Query("userId") int userId,
+                                                          @Query("plantId") int plantId);
+
 }

@@ -14,8 +14,9 @@ public class GoodsFactory {
     public final static String ADD = "http://120.25.1.26:97/goods/add";
     public final static String DELETE = "http://120.25.1.26:97/goods/delete";
     public final static String UPDATE = "http://120.25.1.26:97/goods/update";
-    public final static String ADD_TO_COLLECTION = "http://120.25.1.26:97/goods/addToCollection";
-    public final static String REMOVE_COLLECTION = "http://120.25.1.26:97/goods/removeCollection";
+    public final static String ADD_TO_COLLECTION = "http://120.25.1.26:97/goodsCollection/addToCollection";
+    public final static String REMOVE_COLLECTION = "http://120.25.1.26:97/goodsCollection/removeCollection";
+    public final static String GET_IF_COLLECTED = "http://120.25.1.26:97/goodsCollection/getIfCollected";
 
 
     public static GoodsService create() {

@@ -16,6 +16,8 @@ import com.treecute.plant.R;
 import com.treecute.plant.databinding.ActivityPublishGoodsBinding;
 import com.treecute.plant.model.Plant;
 import com.treecute.plant.model.User;
+import com.treecute.plant.util.NoStatusBar;
+import com.treecute.plant.util.SharedPreferencesHelper;
 import com.treecute.plant.util.TAG;
 import com.treecute.plant.viewmodel.PublishGoodsViewModel;
 
@@ -36,10 +38,7 @@ public class PublishGoodsActivity extends AppCompatActivity {
     }
 
     private void getUserData() {
-        SharedPreferences sharedPreferences = this.getSharedPreferences("user", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String userJson = sharedPreferences.getString("userJson", null);
-        User user = gson.fromJson(userJson, User.class);
+        User user = SharedPreferencesHelper.getUser(this);
         viewModel.setUserName(user.getUsername());
         viewModel.setUserId(user.getId());
         viewModel.setToken(user.getAccessToken());

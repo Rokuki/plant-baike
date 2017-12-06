@@ -34,4 +34,26 @@ public interface GoodsService {
                                              @Query("content") String content,
                                              @Query("plant_id") int plantId);
 
+    @GET
+    Observable<ResponseResult<Response>> getIfCollected(@Url String url,
+                                                        @Query("token") String token,
+                                                        @Query("username") String username,
+                                                        @Query("userId") int userId,
+                                                        @Query("goodsId") int goodsId);
+
+    @POST
+    Observable<ResponseResult<Response>> addToCollection(@Url String url,
+                                                         @Query("token") String token,
+                                                         @Query("username") String username,
+                                                         @Query("userId") int userId,
+                                                         @Query("goodsId") int goodsId);
+
+    @POST
+    Observable<ResponseResult<Response>> removeCollection(@Url String url,
+                                                          @Query("token") String token,
+                                                          @Query("username") String username,
+                                                          @Query("userId") int userId,
+                                                          @Query("goodsId") int goodsId);
+
+
 }
