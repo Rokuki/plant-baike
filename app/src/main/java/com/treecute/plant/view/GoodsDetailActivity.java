@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.treecute.plant.PlantApplication;
@@ -15,6 +17,7 @@ import com.treecute.plant.R;
 import com.treecute.plant.data.GoodsFactory;
 import com.treecute.plant.data.GoodsService;
 import com.treecute.plant.databinding.ActivityGoodsDetailBinding;
+import com.treecute.plant.databinding.GoodsDetailBottomsheetBinding;
 import com.treecute.plant.model.Goods;
 import com.treecute.plant.model.Plant;
 import com.treecute.plant.model.Response;
@@ -27,6 +30,7 @@ import com.treecute.plant.viewmodel.ItemGoodsViewModel;
 import com.treecute.plant.viewmodel.PlantDetailViewModel;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -105,34 +109,38 @@ public class GoodsDetailActivity extends AppCompatActivity {
 
     private void getIfCollected(final Menu menu) {
         User user = SharedPreferencesHelper.getUser(this);
-        plantApplication = PlantApplication.create(this);
-        goodsService = plantApplication.getGoodsService();
+        if (user != null) {
+            plantApplication = PlantApplication.create(this);
+            goodsService = plantApplication.getGoodsService();
 
-        Disposable disposable = goodsService.getIfCollected(GoodsFactory.GET_IF_COLLECTED, user.getAccessToken(), user.getUsername(), user.getId(), goods.getId())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(plantApplication.subscribeScheduler())
-                .subscribe(new Consumer<ResponseResult<Response>>() {
-                    @Override
-                    public void accept(ResponseResult<Response> responseResponseResult) throws Exception {
-                        if (responseResponseResult.getData().getStatus() == 1) {
-                            //已收藏
-                            collected_before = collected = true;
-                            getMenuInflater().inflate(R.menu.menu_collected, menu);
-                        } else if (responseResponseResult.getData().getStatus() == 0) {
-                            //未收藏
-                            collected_before = collected = false;
-                            getMenuInflater().inflate(R.menu.menu_collect, menu);
-                        } else {
-                            //错误
+            Disposable disposable = goodsService.getIfCollected(GoodsFactory.GET_IF_COLLECTED, user.getAccessToken(), user.getUsername(), user.getId(), goods.getId())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(plantApplication.subscribeScheduler())
+                    .subscribe(new Consumer<ResponseResult<Response>>() {
+                        @Override
+                        public void accept(ResponseResult<Response> responseResponseResult) throws Exception {
+
+                            if (responseResponseResult.getData().getStatus() == 1) {
+                                //已收藏
+                                collected_before = collected = true;
+                                getMenuInflater().inflate(R.menu.menu_collected, menu);
+                            } else if (responseResponseResult.getData().getStatus() == 0) {
+                                //未收藏
+                                collected_before = collected = false;
+                                getMenuInflater().inflate(R.menu.menu_collect, menu);
+                            } else {
+                                //错误
+                            }
                         }
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        throwable.printStackTrace();
-                    }
-                });
-        compositeDisposable.add(disposable);
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Toast.makeText(GoodsDetailActivity.this, throwable.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+            compositeDisposable.add(disposable);
+        }
+
     }
 
     @Override

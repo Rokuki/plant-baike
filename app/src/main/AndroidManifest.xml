@@ -26,19 +26,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.LoginActivity"></activity>
-        <activity android:name=".view.SignUpActivity"></activity>
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.SignUpActivity" />
         <activity
             android:name=".view.PlantDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".view.CategoryDetailActivity"></activity>
-        <activity android:name=".view.RecognitionActivity"></activity>
-        <activity android:name=".view.RecognitionResultActivity"></activity>
-        <activity android:name=".view.SearchActivity"></activity>
-        <activity android:name=".view.SearchResultActivity"></activity>
-        <activity android:name=".view.PublishGoodsActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".view.CategoryDetailActivity" />
+        <activity android:name=".view.RecognitionActivity" />
+        <activity android:name=".view.RecognitionResultActivity" />
+        <activity android:name=".view.SearchActivity" />
+        <activity android:name=".view.SearchResultActivity" />
+        <activity android:name=".view.PublishGoodsActivity" />
         <activity android:name=".view.PickPlantActivity" />
-        <activity android:name=".view.GoodsDetailActivity"></activity>
+        <activity android:name=".view.GoodsDetailActivity" />
+        <activity android:name=".view.CartActivity" />
+        <activity android:name=".view.CollectionsActivity"></activity>
     </application>
 
 </manifest>

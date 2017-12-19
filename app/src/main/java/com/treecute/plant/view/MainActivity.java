@@ -26,6 +26,7 @@ import com.treecute.plant.data.UserService;
 import com.treecute.plant.databinding.ActivityMainBinding;
 import com.treecute.plant.model.ResponseResult;
 import com.treecute.plant.util.SetStatusbar;
+import com.treecute.plant.util.SharedPreferencesHelper;
 import com.treecute.plant.util.TAG;
 import com.treecute.plant.view.adapter.MainFragmentAdapter;
 import com.treecute.plant.databinding.MenuLeftDrawerBinding;
@@ -71,13 +72,12 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     private void checkUserLoginStatus(){
         final SharedPreferences sharedPreferences = this.getSharedPreferences("user", MODE_PRIVATE);
+        Log.d(TAG.TAG, "checkUserLoginStatus: " + is_login);
         if (!is_login){
             //未确认，取存储看是否已经登录
             String access_token = sharedPreferences.getString("access_token",null);
             if (access_token != null) {
-                Gson gson = new Gson();
-                String userJson = sharedPreferences.getString("userJson", null);
-                User user = gson.fromJson(userJson, User.class);
+                User user = SharedPreferencesHelper.getUser(MainActivity.this);
                 PlantApplication plantApplication = PlantApplication.create(this);
                 UserService userService = plantApplication.getUserService();
                 Disposable disposable = userService.checkLogin(UserFactory.CHECK_LOGIN, access_token, user.getUsername())
@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                             }
                         });
                 compositeDisposable.add(disposable);
+            } else {
+                isLogin(sharedPreferences);
             }
         } else {
             isLogin(sharedPreferences);
@@ -104,9 +106,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     private void isLogin(SharedPreferences sharedPreferences) {
         if (is_login){
-            Gson gson = new Gson();
-            String userJson = sharedPreferences.getString("userJson",null);
-            User user = gson.fromJson(userJson,User.class);
+            User user = SharedPreferencesHelper.getUser(MainActivity.this);
             UserViewModel userViewModel = new UserViewModel(user, MainActivity.this);
             menuLeftDrawerBinding.setUserViewModel(userViewModel);
         }else {

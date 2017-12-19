@@ -24,9 +24,9 @@
     </style>
 
     <style name="editText" parent="Material.Widget.EditText">
-        <item name="colorControlNormal">@color/white</item>
-        <item name="colorControlActivated">@color/white</item>
-        <item name="android:textColorHint">@color/white</item>
+        <item name="colorControlNormal">@color/black</item>
+        <item name="colorControlActivated">@color/black</item>
+        <item name="android:textColorHint">@color/black</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

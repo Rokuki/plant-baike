@@ -3,8 +3,11 @@ package com.treecute.plant.data;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 
+import com.treecute.plant.model.Cart;
 import com.treecute.plant.model.Response;
 import com.treecute.plant.model.ResponseResult;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -55,5 +58,28 @@ public interface GoodsService {
                                                           @Query("userId") int userId,
                                                           @Query("goodsId") int goodsId);
 
+    @POST
+    Observable<ResponseResult<Response>> addToCart(@Url String url,
+                                                   @Query("token") String token,
+                                                   @Query("username") String username,
+                                                   @Query("userId") int userId,
+                                                   @Query("goodsId") int goodsId,
+                                                   @Query("quantity") int quantity,
+                                                   @Query("sellerId") int sellerId,
+                                                   @Query("price") double price,
+                                                   @Query("plantId") int plantId);
+
+    @POST
+    Observable<ResponseResult<Response>> removeGoodsFromCart(@Url String url,
+                                                             @Query("token") String token,
+                                                             @Query("username") String username,
+                                                             @Query("userId") int userId,
+                                                             @Query("goodsId") int goodsId);
+
+    @GET
+    Observable<ResponseResult<CartResponse>> queryCart(@Url String url,
+                                                       @Query("token") String token,
+                                                       @Query("username") String username,
+                                                       @Query("userId") int userId);
 
 }

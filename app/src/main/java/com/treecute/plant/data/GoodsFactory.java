@@ -17,7 +17,9 @@ public class GoodsFactory {
     public final static String ADD_TO_COLLECTION = "http://120.25.1.26:97/goodsCollection/addToCollection";
     public final static String REMOVE_COLLECTION = "http://120.25.1.26:97/goodsCollection/removeCollection";
     public final static String GET_IF_COLLECTED = "http://120.25.1.26:97/goodsCollection/getIfCollected";
-
+    public final static String ADD_TO_CART = "http://120.25.1.26:97/cart/addToCart";
+    public final static String REMOVE_FROM_CART = "http://120.25.1.26:97/cart/removeFromCart";
+    public final static String QUERY_CART = "http://120.25.1.26:97/cart/query";
 
     public static GoodsService create() {
         Retrofit retrofit = new Retrofit.Builder()

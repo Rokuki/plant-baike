@@ -48,7 +48,7 @@
                 style="@style/Material.Drawable.Ripple.Touch"
                 android:drawableLeft="@drawable/favorite"
                 android:text="       登录/注册"
-                android:onClick="@{userViewModel.loginAndSign}"
+                android:onClick="@{userViewModel::loginAndSign}"
                 android:textSize="15sp"
                 android:textAlignment="textStart"
                 android:background="@color/white"
@@ -68,6 +68,7 @@
             android:layout_height="90dp" />
 
         <com.rey.material.widget.Button
+            android:onClick="@{userViewModel::collections}"
             style="@style/Material.Drawable.Ripple.Touch"
             android:drawableLeft="@drawable/favorite"
             android:text="       我的收藏"
@@ -79,6 +80,7 @@
             android:paddingStart="30dp"/>
 
         <com.rey.material.widget.Button
+            android:onClick="@{userViewModel::cart}"
             android:id="@+id/button"
             style="@style/Material.Drawable.Ripple.Touch"
             android:layout_width="match_parent"

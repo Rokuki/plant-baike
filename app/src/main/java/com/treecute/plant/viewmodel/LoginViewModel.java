@@ -18,6 +18,7 @@ import com.treecute.plant.model.ResponseResult;
 import com.treecute.plant.model.User;
 import com.treecute.plant.util.MD5;
 import com.treecute.plant.view.MainActivity;
+import com.treecute.plant.view.SignUpActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -66,9 +67,9 @@ public class LoginViewModel extends BaseObservable {
                     public void accept(ResponseResult<User> userResponseResult) throws Exception {
                         String message = userResponseResult.getMessage();
                         User user = userResponseResult.getData();
-                        String access_token = userResponseResult.getData().getAccessToken();
                         if (message.equals("SUCCESS")){
                             //登录成功
+                            String access_token = userResponseResult.getData().getAccessToken();
                             Gson gson = new Gson();
                             String userJson = gson.toJson(user);
                             SharedPreferences shared = context.getSharedPreferences("user",Context.MODE_PRIVATE);
@@ -88,5 +89,10 @@ public class LoginViewModel extends BaseObservable {
                     }
                 });
         compositeDisposable.add(disposable);
+    }
+
+    public void onSignUpClick(View view) {
+        Intent intent = new Intent(context, SignUpActivity.class);
+        context.startActivity(intent);
     }
 }

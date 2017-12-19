@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="detail"
+            type="com.treecute.plant.viewmodel.ItemGoodsViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_marginBottom="60dp"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    app:plantPic="@{detail.plantPic}"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="20dp">
+
+                    <TextView
+                        android:text="@{detail.title}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="@{detail.price}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:text="数量"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="end">
+
+                    <com.mikepenz.iconics.view.IconicsImageView
+                        android:onClick="@{detail::onMinusClick}"
+                        app:iiv_icon="@string/faw_minus"
+                        app:iiv_color="@color/colorPrimary"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center" />
+
+                    <EditText
+                        android:id="@+id/quantity"
+                        android:text="@{detail.inputQuantity}"
+                        android:lines="1"
+                        android:inputType="number"
+                        android:textAlignment="center"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <com.mikepenz.iconics.view.IconicsImageView
+                        android:onClick="@{detail::onPlusClick}"
+                        app:iiv_icon="@string/faw_plus"
+                        app:iiv_color="@color/colorPrimary"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp">
+
+                <com.rey.material.widget.Button
+                    android:onClick="@{detail::onConfirmClick}"
+                    style="@style/Material.Drawable.Ripple.Touch"
+                    android:text="@{detail.btnHint}"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

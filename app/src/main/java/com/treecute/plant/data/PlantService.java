@@ -4,6 +4,7 @@ package com.treecute.plant.data;
 import android.databinding.ObservableInt;
 
 import com.treecute.plant.model.PlantCategory;
+import com.treecute.plant.model.PlantCollections;
 import com.treecute.plant.model.Response;
 import com.treecute.plant.model.ResponseResult;
 import com.treecute.plant.model.SearchSuggestions;
@@ -54,4 +55,9 @@ public interface PlantService {
                                                           @Query("userId") int userId,
                                                           @Query("plantId") int plantId);
 
+    @GET
+    Observable<PlantCollectionsResponse> queryCollections(@Url String url,
+                                                          @Query("token") String token,
+                                                          @Query("username") String username,
+                                                          @Query("userId") int userId);
 }

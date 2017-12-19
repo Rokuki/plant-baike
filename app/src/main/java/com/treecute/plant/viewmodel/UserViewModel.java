@@ -14,11 +14,13 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.treecute.plant.model.User;
+import com.treecute.plant.util.TAG;
+import com.treecute.plant.view.CartActivity;
+import com.treecute.plant.view.CollectionsActivity;
 import com.treecute.plant.view.LoginActivity;
 
 import java.util.Observable;
 
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by mkind on 2017/11/21 0021.
@@ -35,6 +37,7 @@ public class UserViewModel extends BaseObservable {
         this.context = context;
         signAndLogin = new ObservableInt(View.VISIBLE);
         userVisibility = new ObservableInt(View.GONE);
+        Log.d(TAG.TAG, "UserViewModel: ");
     }
 
     public UserViewModel(User user, Context context) {
@@ -45,7 +48,19 @@ public class UserViewModel extends BaseObservable {
     }
 
     public void loginAndSign(View view){
+        Log.d(TAG.TAG, "loginAndSign: ");
         Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+        Log.d(TAG.TAG, "loginAndSign: ");
+    }
+
+    public void cart(View view) {
+        Intent intent = new Intent(context, CartActivity.class);
+        context.startActivity(intent);
+    }
+
+    public void collections(View view) {
+        Intent intent = new Intent(context, CollectionsActivity.class);
         context.startActivity(intent);
     }
 

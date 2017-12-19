@@ -20,7 +20,7 @@ public class PlantFactory {
     public final static String ADD_TO_COLLECTION = "http://120.25.1.26:97/plantCollection/addToCollection";
     public final static String REMOVE_COLLECTION = "http://120.25.1.26:97/plantCollection/removeCollection";
     public final static String GET_IF_COLLECTED = "http://120.25.1.26:97/plantCollection/getIfCollected";
-
+    public final static String QUERY_COLLECTIONS = "http://120.25.1.26:97/plantCollection/query";
 
     public static PlantService create(){
         Retrofit retrofit = new Retrofit.Builder()

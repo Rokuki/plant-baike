@@ -414,6 +414,34 @@
 
         </android.support.v4.widget.NestedScrollView>
 
+
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <com.rey.material.widget.Button
+                android:onClick="@{detail::onAddToCartClick}"
+                android:text="加入购物车"
+                style="@style/Material.Drawable.Ripple.Touch"
+                android:background="@color/md_grey_100"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <com.rey.material.widget.Button
+                android:onClick="@{detail::onBuyClick}"
+                style="@style/Material.Drawable.Ripple.Touch"
+                android:background="@color/md_orange_500"
+                android:text="立即购买"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+
     </android.support.design.widget.CoordinatorLayout>
 
 </layout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="cart"
+            type="com.treecute.plant.viewmodel.CartViewModel">
+
+        </variable>
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.treecute.plant.view.CartActivity"
+        android:background="@color/md_grey_100">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:elevation="0dp"
+            android:id="@+id/appBarLayout">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/appBarLayout"
+            android:layout_alignParentStart="true">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:id="@+id/linearLayout"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
+
+            <com.rey.material.widget.CheckBox
+                style="@style/Material.Drawable.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:id="@+id/checkBox" />
+
+            <TextView
+                android:text="全选"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/checkBox"
+                android:layout_marginStart="14dp" />
+
+            <TextView
+                android:text="@{cart.total}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/checkBox"
+                android:layout_marginStart="113dp" />
+
+            <com.rey.material.widget.Button
+                android:text="结算"
+                android:textColor="@color/white"
+                android:background="@color/md_orange_600"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>
+
